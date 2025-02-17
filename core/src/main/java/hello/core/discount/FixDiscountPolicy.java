@@ -3,10 +3,10 @@ package hello.core.discount;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemoryRepository;
+import hello.core.member.MemoryMemberRepository;
 
 public class FixDiscountPolicy implements DiscountPolicy {
-    MemberRepository memberRepository = new MemoryMemoryRepository();
+    MemberRepository memberRepository = new MemoryMemberRepository();
 
     private int discountFixAmount = 1000;   //1000원 할인
 
