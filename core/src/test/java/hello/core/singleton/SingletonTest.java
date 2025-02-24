@@ -2,6 +2,7 @@ package hello.core.singleton;
 
 import hello.core.AppConfig;
 import hello.core.member.MemberService;
+import hello.core.order.OrderService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,6 +64,8 @@ public class SingletonTest {
         //memberService != memberService2
         Assertions.assertThat(memberService1).isSameAs(memberService2);
     }
+
+
 
 
 }
