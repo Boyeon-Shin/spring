@@ -30,7 +30,7 @@ public class ConfigurationSingletonTest {
         Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
         Assertions.assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
 
-        Assertions.assertThat(memberRepository).isInstanceOf(MemberService.class);
+        Assertions.assertThat(memberRepository).isInstanceOf(MemberRepository.class);
     }
 
     @Test
