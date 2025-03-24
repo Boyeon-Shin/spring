@@ -26,7 +26,12 @@ public class MyView {
         dispatcher.forward(request, response);
     }
 
+    // model -> request Attribute 바꾼다.
     private void modelToRequestAttribute(final Map<String, Object> model, final HttpServletRequest request) {
-        model.forEach((key, value) -> request.setAttribute(key, value));
+        model.forEach((key, value) -> {
+            request.setAttribute(key, value);
+            System.out.println("request.setAttribute - key: " + key + ", value: " + value);
+        });
+
     }
 }
