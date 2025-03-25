@@ -13,11 +13,10 @@ public class MemberListControllerV3 implements ControllerV3 {
 
     @Override
     public ModelView process(final Map<String, String> paramMap) {
-        List<Member> memberList = memberRepository.findAll();
+        List<Member> members = memberRepository.findAll();
 
         ModelView mv = new ModelView("members");
-        System.out.println("v3: " + memberList);
-        mv.getModel().put("members", memberList);
+        mv.getModel().put("members", members);
 
         return mv;
     }
