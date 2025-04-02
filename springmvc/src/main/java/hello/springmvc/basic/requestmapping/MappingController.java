@@ -1,6 +1,10 @@
 package hello.springmvc.basic.requestmapping;
 
 import hello.springmvc.SpringmvcApplication;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -103,4 +107,11 @@ public class MappingController {
         log.info("mappingProduces");
         return "ok";
     }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(5, 1, 3, 4, 6);
+        Collections.sort(numbers);
+    }
+
+
 }
