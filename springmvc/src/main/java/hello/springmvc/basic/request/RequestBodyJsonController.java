@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
@@ -51,5 +52,26 @@ public class RequestBodyJsonController {
     public String requestBodyJsonV3(@RequestBody HelloData helloData) throws IOException {
         log.info("username = {} , age= {}", helloData.getUsername(), helloData.getAge());
         return "ok";
+    }
+
+    @ResponseBody
+    @PostMapping("/request-body-json-v4")
+    public HttpEntity<String> requestBodyJsonV4(HttpEntity<HelloData> httpEntity) throws IOException {
+        HelloData helloData = httpEntity.getBody();
+        log.info("username = {} , age= {}", helloData.getUsername(), helloData.getAge());
+        return new HttpEntity<>("ok");
+    }
+
+    /**
+     * @RequestBody 생략 불가능(@ModelAttribute 가 적용되어 버림) HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter
+     * (content-type: application/json)
+     * @ResponseBody 적용 - 메시지 바디 정보 직접 반환(view 조회X) - HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter
+     * 적용(Accept: application/json)
+     */
+    @ResponseBody
+    @PostMapping("/request-body-json-v5")
+    public HelloData requestBodyJsonV5(@RequestBody HelloData data) {
+        log.info("username={}, age={}", data.getUsername(), data.getAge());
+        return data;
     }
 }
