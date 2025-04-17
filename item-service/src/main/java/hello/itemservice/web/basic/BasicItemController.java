@@ -41,7 +41,7 @@ public class BasicItemController {
     }
 
 
-//    @PostMapping("/add")
+    //    @PostMapping("/add")
     public String addItemV1(@RequestParam String itemName,
                             @RequestParam int price,
                             @RequestParam Integer quantity,
@@ -58,8 +58,8 @@ public class BasicItemController {
         return "basic/item";
     }
 
-//    @PostMapping("/add")
-    public String addItemV2 (@ModelAttribute("item") Item item, Model model) {
+    //    @PostMapping("/add")
+    public String addItemV2(@ModelAttribute("item") Item item, Model model) {
 
         itemRepository.save(item);
 //        model.addAttribute("item", item);  // @ModelAttribute("item") item 이름으로 자동 추가, 생략 가능, 매개변수의 Model도 생략 가능
@@ -67,7 +67,7 @@ public class BasicItemController {
         return "basic/item";
     }
 
-//    @PostMapping("/add")
+    //    @PostMapping("/add")
     // Item -> item 으로 자동으로 변경되어 modelAttribute 에 넣어줌
     public String addItemV3(@ModelAttribute Item item) {
 
@@ -93,14 +93,12 @@ public class BasicItemController {
         model.addAttribute("item", item);
         return "basic/editForm";
     }
-
+  
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable long itemId, Model model) {
-        Item item = itemRepository.findById(itemId);
-        model.addAttribute("item", item);
-        return "basic/editForm";
+    public String edit(@PathVariable long itemId, @ModelAttribute Item item) {
+        itemRepository.update(itemId, item);
+        return "redirect:/basic/items/{itemId}";
     }
-
 
 
     /**
