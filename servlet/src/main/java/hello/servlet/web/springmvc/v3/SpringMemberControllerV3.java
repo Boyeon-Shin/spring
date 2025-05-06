@@ -20,13 +20,13 @@ public class SpringMemberControllerV3 {
 
     MemberRepository memberRepository = MemberRepository.getInstance();
 
-//    @RequestMapping(value = "/new-form" , method = RequestMethod.GET)
+    //    @RequestMapping(value = "/new-form" , method = RequestMethod.GET)
     @GetMapping("/new-form")
     public String newForm() {
         return "new-form";
     }
 
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    //    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @PostMapping("/save")
     //파라미터를 직접 받을 수 있음 @RequestParam("paramterName") Type 변수명
     public String save(@RequestParam("username") String username,
@@ -40,7 +40,7 @@ public class SpringMemberControllerV3 {
         return "save-result";
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
+    //    @RequestMapping(method = RequestMethod.GET)
     @GetMapping
     public String members(Model model) {
 
@@ -49,4 +49,9 @@ public class SpringMemberControllerV3 {
         model.addAttribute("members", members);
         return "members";
     }
+
+
+
+
+
 }
